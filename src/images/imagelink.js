@@ -1,0 +1,11 @@
+// https://i.ibb.co/RSHQhGZ/Bi-directional.jpg
+// https://i.ibb.co/S7BQRs5/dc-compect-current-sensor.jpg
+// https://i.ibb.co/yh03KKr/humidity-sensor.jpg
+// https://i.ibb.co/h9qy4y6/ic-degital-volume.jpg
+// https://i.ibb.co/pXz6tMZ/micro-gps-tracker.jpg
+// https://i.ibb.co/1n7byc3/micro-receiver.jpg
+// https://i.ibb.co/yYmqfVF/micro-switch.png
+// https://i.ibb.co/Thc5vfJ/Ohm-meter.jpg
+// https://i.ibb.co/m0T2jYj/position-sensor.jpg
+// https://i.ibb.co/vQWftQ6/pressure-sensor.jpg
+// https://i.ibb.co/QcwD5ry/capacitor.jpg
