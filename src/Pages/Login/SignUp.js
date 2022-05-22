@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import Social from './Social';
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -63,7 +64,7 @@ const SignUp = () => {
                     <div class="flex flex-col w-2/4 mx-auto my-4 border-opacity-50">
                         <div class="divider">OR</div>
                     </div>
-                    <button class="input text-xl input-bordered w-full max-w-xl my-2 block mx-auto bg-secondary text-white"> Continue with Google</button>
+                    <Social></Social>
                 </form>
                 <div className="mx-auto w-3/4">
                     <p className='ml-6 text-xl my-4'>Already have an account? <Link to='/login' className='text-blue-500'>Login now</Link></p>
