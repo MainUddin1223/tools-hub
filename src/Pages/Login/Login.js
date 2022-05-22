@@ -3,10 +3,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Social from './Social';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+
+    const onSubmit = data => {
+        console.log(data);
+        // createUserWithEmailAndPassword()
+    };
     return (
         <div>
             <div class="card lg:w-2/4 mx-auto p-4 my-16 bg-base-100 shadow-xl">
@@ -35,7 +41,7 @@ const Login = () => {
                         <label className="label">
                             <span className="label-text text-xl lg:ml-8">Password</span>
                         </label>
-                        <input type='password' placeholder='Your Password' class="input text-xl input-bordered block mx-auto w-full max-w-xl my-2 "  {...register("password", {
+                        <input type='current-password' placeholder='Your Password' class="input text-xl input-bordered block mx-auto w-full max-w-xl my-2 "  {...register("password", {
                             required: {
                                 value: true,
                                 message: 'Password is required'

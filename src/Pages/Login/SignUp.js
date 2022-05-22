@@ -1,11 +1,36 @@
-import React from 'react';
+import { updateProfile } from 'firebase/auth';
+import React, { useState } from 'react';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
+import useToken from '../Hooks/useToken';
 import Social from './Social';
 
 const SignUp = () => {
+    const [displayName, setDisplayName] = useState('')
+    const navigate = useNavigate()
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+    const [token] = useToken(user)
+    const onSubmit = async data => {
+        await createUserWithEmailAndPassword(data.email, data.password)
+        setDisplayName(data.name);
+        await updateProfile({ displayName });
+    };
+    if (loading) {
+        return <p>loading</p>
+    }
+    if (user) {
+
+
+    }
     return (
         <div>
             <div class="card lg:w-2/4 mx-auto p-4 my-16 bg-base-100 shadow-xl">
@@ -46,7 +71,7 @@ const SignUp = () => {
                         <label className="label">
                             <span className="label-text text-xl lg:ml-8">Password</span>
                         </label>
-                        <input type='password' placeholder='Your Password' class="input text-xl input-bordered block mx-auto w-full max-w-xl my-2 "  {...register("password", {
+                        <input type='current-password' placeholder='Your Password' class="input text-xl input-bordered block mx-auto w-full max-w-xl my-2 "  {...register("password", {
                             required: {
                                 value: true,
                                 message: 'Password is required'
