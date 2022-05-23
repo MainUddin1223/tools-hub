@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useTools from '../Hooks/useTools';
 
 const Tools = () => {
@@ -25,7 +26,7 @@ const Tools = () => {
                     </div>
 
                     <div class="card-actions justify-end">
-                        <button className='btn btn-accent btn-sm my-4 text-white'>Order Now</button>
+                        <button className='btn btn-accent btn-sm my-4 text-white'><Link to={`order/${tool._id}`}>Order Now</Link></button>
                     </div>
                 </div>
                     </div>

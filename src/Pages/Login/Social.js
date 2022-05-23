@@ -2,6 +2,7 @@ import React from 'react';
 import auth from '../../firebase.init';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Spinner from '../Spinner/Spinner';
+import useToken from '../Hooks/useToken';
 
 const Social = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -9,8 +10,9 @@ const Social = () => {
         event.preventDefault()
         signInWithGoogle()
     }
+    const [token] = useToken(user)
     if (user) {
-        console.log(user);
+
     }
 
     return (
