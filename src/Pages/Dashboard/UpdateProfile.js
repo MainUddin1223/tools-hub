@@ -3,7 +3,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
-import useProfile from '../Hooks/useProfile';
 
 const UpdateProfile = () => {
     const [user] = useAuthState(auth)

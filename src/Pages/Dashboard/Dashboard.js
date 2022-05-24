@@ -2,21 +2,29 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useAdmin from '../Hooks/useAdmin';
+import Spinner from '../Spinner/Spinner';
 
 const Dashboard = () => {
-    const [user] = useAuthState(auth)
+    const [user, loading] = useAuthState(auth);
+    const email = user?.email;
+    const [admin] = useAdmin(email);
+    const isAdmin = admin?.role;
     const dashboardList = <>
 
         <li ><Link to='/dashboard' >My Profile</Link></li>
-        <li ><Link to='review'>Review</Link></li>
-        <li><Link to='order'>My Order</Link></li>
-        <li><Link to='manageOrder'>Manage Order</Link></li>
-        <li><Link to='makeAdmin'>Admin Panel</Link></li>
-        <li><Link to='manageProduct'>Manage Product</Link></li>
-        <li><Link to='addProduct'>Add Product</Link></li>
+        {!isAdmin && <li ><Link to='review'>Review</Link></li>}
+        {!isAdmin && <li><Link to='order'>My Order</Link></li>}
+        {isAdmin && <li><Link to='manageOrder'>Manage Order</Link></li>}
+        {isAdmin && <li><Link to='makeAdmin'>Admin Panel</Link></li>}
+        {isAdmin && <li><Link to='manageProduct'>Manage Product</Link></li>}
+        {isAdmin && <li><Link to='addProduct'>Add Product</Link></li>}
         <li><Link to='updateProfile'>Update Profile</Link></li>
     </>
-console.log(user);
+    console.log(user);
+    if (loading) {
+        return <Spinner></Spinner>
+    }
     return (
         <div class="drawer drawer-mobile">
 
