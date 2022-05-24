@@ -33,6 +33,7 @@ const MakeAdmin = () => {
         })
             .then(res => res.json())
             .then(data => {
+                setSuccess(false)
                 if (data.modifiedCount > 0) {
                     toast.success('Successfully add to admin panel', {
                         position: "top-center",
@@ -43,10 +44,23 @@ const MakeAdmin = () => {
                         draggable: true,
                         progress: undefined,
                     });
+                   
                 }
             })
-        setSuccess(false)
     }
+    let findAdmin
+    if (success) {
+        findAdmin = <div>
+            <p>{adminData?.name}</p>
+            <p>{adminData?.email}</p>
+            <button onClick={makeAdmin}>make Admin</button>
+        </div>
+    }
+    else {
+        findAdmin = <></>
+    }
+
+
     useEffect(() => {
         fetch('http://localhost:5000/users/admin',)
             .then(res => res.json())
@@ -57,11 +71,7 @@ const MakeAdmin = () => {
     return (
         <div>
             {
-                !success ? <></> : <div>
-                    <p>{adminData?.name}</p>
-                    <p>{adminData?.email}</p>
-                    <button onClick={makeAdmin}>make Admin</button>
-                </div>
+                findAdmin
             }
             <input type="email" ref={userEmail} />
             <button onClick={getEmail} className='btn btn primary'>Add an Admin</button>

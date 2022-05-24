@@ -1,12 +1,13 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useAdmin from '../Hooks/useAdmin';
 import Spinner from '../Spinner/Spinner';
 
 const Dashboard = () => {
     const [user, loading] = useAuthState(auth);
+    const navigate=useNavigate()
     const email = user?.email;
     const [admin] = useAdmin(email);
     const isAdmin = admin?.role;
@@ -21,9 +22,11 @@ const Dashboard = () => {
         {isAdmin && <li><Link to='addProduct'>Add Product</Link></li>}
         <li><Link to='updateProfile'>Update Profile</Link></li>
     </>
-    console.log(user);
     if (loading) {
         return <Spinner></Spinner>
+    }
+    if(!user){
+        navigate('/login')
     }
     return (
         <div class="drawer drawer-mobile">

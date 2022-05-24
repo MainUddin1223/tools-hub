@@ -4,7 +4,7 @@ import auth from '../../firebase.init';
 
 const ManageOrder = () => {
     const [user] = useAuthState(auth)
-    const email = user.email;
+    const email = user?.email;
     const [orders, setOrders] = useState([]);
     useEffect(() => {
         const url = `http://localhost:5000/order`;
