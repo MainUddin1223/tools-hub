@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 const Order = () => {
     const { orderId } = useParams();
     const [tool, setTool] = useState({})
+    const navigate = useNavigate()
     const [user] = useAuthState(auth);
     const url = `http://localhost:5000/tools/${orderId}`;
     fetch(url)
@@ -46,6 +47,7 @@ const Order = () => {
                     draggable: true,
                     progress: undefined,
                 });
+                navigate('/dashboard/order')
             })
     };
     return (

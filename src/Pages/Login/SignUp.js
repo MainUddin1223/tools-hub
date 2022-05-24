@@ -8,7 +8,6 @@ import useToken from '../Hooks/useToken';
 import Social from './Social';
 
 const SignUp = () => {
-    const [displayName, setDisplayName] = useState('')
     const navigate = useNavigate()
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -18,15 +17,17 @@ const SignUp = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
-    const [token] = useToken(user)
     const onSubmit = async data => {
+        const displayName = data.name;
+        console.log(displayName);
         await createUserWithEmailAndPassword(data.email, data.password)
-        setDisplayName(data.name);
         await updateProfile({ displayName });
     };
+    const [token] = useToken(user)
     if (loading) {
         return <p>loading</p>
     }
+
     if (user) {
 
 
