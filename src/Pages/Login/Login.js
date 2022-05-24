@@ -3,16 +3,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Social from './Social';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import Spinner from '../Spinner/Spinner';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
     const onSubmit = data => {
         console.log(data);
-        // createUserWithEmailAndPassword()
+        signInWithEmailAndPassword(data.email,data.password)
     };
+    if (loading) {
+        return <Spinner></Spinner>
+    }
     return (
         <div>
             <div class="card lg:w-2/4 mx-auto p-4 my-16 bg-base-100 shadow-xl">
@@ -60,7 +69,7 @@ const Login = () => {
                     <div class="flex flex-col w-2/4 mx-auto my-4 border-opacity-50">
                         <div class="divider">OR</div>
                     </div>
-                   <Social></Social>
+                    <Social></Social>
                 </form>
                 <div className="mx-auto w-3/4">
                     <p className='ml-6 text-xl my-4'>New here? <Link to='/signup' className='text-blue-500'>Creat an account</Link></p>

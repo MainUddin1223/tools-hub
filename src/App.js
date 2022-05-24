@@ -9,6 +9,7 @@ import ManageOrder from './Pages/Dashboard/ManageOrder';
 import ManageProduct from './Pages/Dashboard/ManageProduct';
 import MyOrder from './Pages/Dashboard/MyOrder';
 import MyProfile from './Pages/Dashboard/MyProfile';
+import UpdateProfile from './Pages/Dashboard/UpdateProfile';
 import Home from './Pages/Home/Home';
 import AllTools from './Pages/Items/AllTools';
 import Order from './Pages/Items/Order';
@@ -17,6 +18,7 @@ import SignUp from './Pages/Login/SignUp';
 import RequireAuth from './Pages/Protected/RequireAuth';
 import Footer from './Pages/Shared/Footer';
 import Navbar from './Pages/Shared/Navbar';
+import NotFound from './Pages/Shared/NotFound';
 
 function App() {
   return (
@@ -42,17 +44,22 @@ function App() {
           {<Order></Order>}
         </RequireAuth>}></Route>
         <Route path="/dashboard" element={<Dashboard></Dashboard>}>
-          <Route index element={<MyProfile></MyProfile>}></Route>
+          <Route index element={<MyProfile></MyProfile>}>
+          </Route>
           <Route path="review" element={<AddReviw></AddReviw>}></Route>
           <Route path='order' element={<MyOrder></MyOrder>}></Route>
           <Route path='manageOrder' element={<ManageOrder></ManageOrder>}></Route>
           <Route path='addProduct' element={<AddAProduct></AddAProduct>}></Route>
           <Route path='manageProduct' element={<ManageProduct></ManageProduct>}></Route>
           <Route path='makeAdmin' element={<MakeAdmin></MakeAdmin>}></Route>
+          <Route path='updateProfile' element={<UpdateProfile></UpdateProfile>}></Route>
         </Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
+        <Route path="*" element={<NotFound></NotFound>}></Route>
+
       </Routes>
+
       <Footer></Footer>
     </div>
   );

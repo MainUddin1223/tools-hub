@@ -2,17 +2,20 @@ import { useEffect, useState } from "react"
 
 const useToken = (user) => {
     const [token, setToken] = useState('');
+    const findUser = user?.user;
+    console.log(findUser);
+    console.log(findUser?.displayName);
     useEffect(() => {
-        const email = user?.user?.email;
-        const name=user?.user?.displayName
-        console.log(name);
-        const currentUser = { email: email,name:name };
+        const name = findUser?.displayName
+        const email = findUser?.email;
+        console.log(name,email);
+        const currentUser = { email: email, name: name };
         if (email) {
             fetch(`http://localhost:5000/users/${email}`, {
                 method: "PUT",
                 headers: {
-                     'content-type': 'application/json' 
-                    },
+                    'content-type': 'application/json'
+                },
                 body: JSON.stringify(currentUser)
             })
                 .then(res => res.json())
@@ -20,7 +23,7 @@ const useToken = (user) => {
                     console.log(data);
                 })
         }
-    }, [user]);
+    }, [findUser]);
     return [token]
 }
 export default useToken;

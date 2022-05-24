@@ -14,8 +14,9 @@ const Dashboard = () => {
         <li><Link to='makeAdmin'>Admin Panel</Link></li>
         <li><Link to='manageProduct'>Manage Product</Link></li>
         <li><Link to='addProduct'>Add Product</Link></li>
+        <li><Link to='updateProfile'>Update Profile</Link></li>
     </>
-
+console.log(user);
     return (
         <div class="drawer drawer-mobile">
 
@@ -25,11 +26,10 @@ const Dashboard = () => {
                 <div>
                     <p for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">click</p>
                     <h1 className='text-center text-4xl my-4'> {user?.displayName}'s Dashboard</h1>
-                    <Outlet />
                 </div>
                 {/* <!-- Page content here --> */}
                 {/* <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
-
+                <Outlet />
             </div>
             <div class="drawer-side">
                 <label for="my-drawer-2" class="drawer-overlay"></label>

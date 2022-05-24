@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import useToken from '../Hooks/useToken';
 
 const MyProfile = () => {
     const [user, loading] = useAuthState(auth)
     const email = user?.email;
-    console.log(email);
     const [userDetail, setUserDetail] = useState({});
+    const url = `http://localhost:5000/users/makeadmin/${email}`;
     useEffect(() => {
-        fetch(`http://localhost:5000/users/profile/${email}`)
+        fetch(url)
             .then(res => res.json())
             .then(data => {
                 setUserDetail(data)

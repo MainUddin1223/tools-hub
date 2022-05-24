@@ -32,6 +32,7 @@ const SignUp = () => {
 
 
     }
+    console.log(user?.user.displayName);
     return (
         <div>
             <div class="card lg:w-2/4 mx-auto p-4 my-16 bg-base-100 shadow-xl">
