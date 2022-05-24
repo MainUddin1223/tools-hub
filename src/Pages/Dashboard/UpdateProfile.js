@@ -25,7 +25,8 @@ const UpdateProfile = () => {
             body: JSON.stringify(userData)
         })
             .then(res => res.json())
-            .then(data => {console.log(data);
+            .then(data => {
+                console.log(data);
                 setUpdatedMessage(data);
             })
         reset()
@@ -35,13 +36,18 @@ const UpdateProfile = () => {
     }
     return (
         <div>
-            <h1>Update Your Profile</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input className='block my-2' placeholder='Your Name'  {...register("name")} required />
-                <input className='block my-2' placeholder='Your Address'{...register("address")} />
-                <input className='block my-2' placeholder='Your Phone'  {...register("phone")} />
-                <input className='block my-2' placeholder='Your Education'  {...register("education")} />
-                <input type="submit" />
+            <h1 className='text-center text-3xl my-8'>Update Your Profile</h1>
+            <form onSubmit={handleSubmit(onSubmit)} className="lg:w-2/4 md:w-3/4 w-full mx-auto">
+                <p className='my-2 text-xl'>Update your Name</p>
+                <input className='block my-2 w-full p-2 rounded text-lg' placeholder='Your Name'  {...register("name")} required />
+                <p className='my-2 text-xl'>Please update your address.</p>
+                <p className='my-2 text-xl'>It will help us to reach you</p>
+                <input className='block my-2 w-full p-2 rounded text-lg' placeholder='Your Address'{...register("address")} required />
+                <p className='my-4 text-xl '> Update your current Phone number.</p>
+                <input className='block my-2 w-full p-2 rounded text-lg' placeholder='Your Phone'  {...register("phone")} required />
+               <p className='text-xl my-4'>From where have you done your graduation??</p>
+                <input className='block my-2 w-full p-2 rounded text-lg' placeholder='Your Education'  {...register("education")} required />
+                <input type="submit" value='Update Profile' className="input bg-primary text-xl block my-4 mx-auto"/>
             </form>
         </div>
     );
