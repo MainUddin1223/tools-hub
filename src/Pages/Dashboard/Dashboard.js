@@ -7,10 +7,9 @@ import Spinner from '../Spinner/Spinner';
 
 const Dashboard = () => {
     const [user, loading] = useAuthState(auth);
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     const email = user?.email;
-    const [admin] = useAdmin(email);
-    const isAdmin = admin?.role;
+    const [isAdmin] = useAdmin(email);
     const dashboardList = <>
 
         <li ><Link to='/dashboard' >My Profile</Link></li>
@@ -25,7 +24,7 @@ const Dashboard = () => {
     if (loading) {
         return <Spinner></Spinner>
     }
-    if(!user){
+    if (!user) {
         navigate('/login')
     }
     return (

@@ -1,6 +1,8 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useRef, useState } from 'react';
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 import AdminTable from './AdminTable';
 
 const MakeAdmin = () => {
@@ -27,11 +29,8 @@ const MakeAdmin = () => {
     const makeAdmin = () => {
         fetch(`http://localhost:5000/users/admin/${email}`, {
             method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
         })
-            .then(res => res.json())
+          .then(res=>res.json())
             .then(data => {
                 setSuccess(false)
                 if (data.modifiedCount > 0) {
@@ -51,7 +50,6 @@ const MakeAdmin = () => {
     let findAdmin
     if (success) {
         findAdmin = <div>
-            <p>{adminData?.name}</p>
             <p>{adminData?.email}</p>
             <button onClick={makeAdmin}>make Admin</button>
         </div>
@@ -73,7 +71,7 @@ const MakeAdmin = () => {
             {
                 findAdmin
             }
-            <input type="email" ref={userEmail} />
+            <input type="email" className='w-2/4 py-2 m-2 rounded text-xl' ref={userEmail} />
             <button onClick={getEmail} className='btn btn primary'>Add an Admin</button>
             <div>
                 <div class="overflow-x-auto">
