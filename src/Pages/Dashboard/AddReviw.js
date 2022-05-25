@@ -1,40 +1,91 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const AddReviw = () => {
+    const { register, formState: { errors }, reset, handleSubmit } = useForm();
     const [user, loading] = useAuthState(auth)
-    const userEmail = user?.email;
-    const [userDetail, setUserDetail] = useState({});
-    const { name, email } = userDetail;
-    const url = `http://localhost:5000/users/makeadmin/${userEmail}`;
-    useEffect(() => {
-        fetch(url)
+
+    const onSubmit = (data) => {
+        const name = user?.name;
+        const rating = data.rating;
+        const review = { name: name, rating: rating }
+        fetch('http://localhost:5000/review', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
             .then(res => res.json())
             .then(data => {
-                setUserDetail(data)
+                if (data.acknowledged) {
+                    toast.success('Review Added Successfully', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                }
+                else {
+                    toast.error('Failed to add review', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                }
             })
-    }, [user])
-    console.log(userDetail);
+        reset()
+
+    }
     if (loading) {
         return <>Loading</>
     }
     return (
         <div>
-            <h1>hello</h1>
-            <h1>{name} </h1>
-            <h1>{email} </h1>
-            <form action="">
-                <select id="cars">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="vw">VW</option>
-                    <option value="audi" selected>Audi</option>
-                </select>
-                <textarea name="" id="" cols="40" rows="2" placeholder='Feedback'></textarea>
-                <input type="submit" value='Add review'/>
-            </form>
+            <h1 className='text-center text-4xl my-8'>Add a review</h1>
+            <div class="card w-96 bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">{user?.name}</h2>
+                    <div class="card-actions justify-center">
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <div className="block mx-auto ">
+                                <label className="label ">
+                                    <span className="label-text text-lg">Add review according to our service</span>
+                                </label>
+                                <input class="input text-xl  input-bordered w-48 max-w-xl my-2 block"  {...register("rating", {
+                                    required: {
+                                        value: true,
+                                        message: 'Please Input Product Quantity'
+                                    },
+                                    min: {
+                                        value: 1,
+                                        message: `Rating must be more above 0 `
+                                    }, max: {
+                                        value: 5,
+                                        message: 'Rating must be 5 or less'
+                                    }
+                                })} />
 
+                                {errors.quantity?.type === 'required' && <span className='label-text-alt  text-xl  text-red-500'>{errors.quantity.message}</span>}
+                                {errors.quantity?.type === 'min' && <span className='label-text-alt text-xl  text-red-500'>{errors.quantity.message}</span>}
+                                {errors.quantity?.type === 'max' && <span className='label-text-alt  text-xl  text-red-500'>{errors.quantity.message}</span>}
+                            </div>
+                            <input type="submit" value='Add Review' className='input bg-accent text-white' />
+                        </form>
+
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

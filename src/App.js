@@ -18,6 +18,7 @@ import SignUp from './Pages/Login/SignUp';
 import RequireAuth from './Pages/Protected/RequireAuth';
 import Footer from './Pages/Shared/Footer';
 import Navbar from './Pages/Shared/Navbar';
+import Portfolio from './Pages/Portfolio/Portfolio'
 import NotFound from './Pages/Shared/NotFound';
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/tools" element={<AllTools></AllTools>}></Route>
+        <Route path="/portfolio" element={<Portfolio></Portfolio>}></Route>
         <Route path="/order/:orderId" element={<RequireAuth>
           {<Order></Order>}
         </RequireAuth>}></Route>

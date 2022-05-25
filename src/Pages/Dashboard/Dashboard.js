@@ -35,7 +35,6 @@ const Dashboard = () => {
             <div class="drawer-content flex flex-col ">
                 <div>
                     <p for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">click</p>
-                    <h1 className='text-center text-4xl my-4'> {user?.displayName}'s Dashboard</h1>
                 </div>
                 {/* <!-- Page content here --> */}
                 {/* <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
