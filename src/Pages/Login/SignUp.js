@@ -2,13 +2,16 @@ import { updateProfile } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useToken from '../Hooks/useToken';
+import Spinner from '../Spinner/Spinner';
 import Social from './Social';
 
 const SignUp = () => {
     const navigate = useNavigate()
+    const location = useLocation();
+
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
@@ -25,14 +28,14 @@ const SignUp = () => {
     };
     const [token] = useToken(user)
     if (loading) {
-        return <p>loading</p>
+        return <Spinner></Spinner>
     }
 
+    let from = location.state?.from?.pathname || "/";
     if (user) {
 
-
+        navigate(from, { replace: true })
     }
-    console.log(user?.user.displayName);
     return (
         <div>
             <div class="card lg:w-2/4 mx-auto p-4 my-16 bg-base-100 shadow-xl">

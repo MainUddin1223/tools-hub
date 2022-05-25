@@ -11,7 +11,8 @@ const AddReviw = () => {
     const onSubmit = (data) => {
         const name = user?.name;
         const rating = data.rating;
-        const review = { name: name, rating: rating }
+        const description = data.description
+        const review = { name: name, rating: rating, description: description }
         fetch('http://localhost:5000/review', {
             method: "POST",
             headers: {
@@ -60,12 +61,12 @@ const AddReviw = () => {
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="block mx-auto ">
                                 <label className="label ">
-                                    <span className="label-text text-lg">Add review according to our service</span>
+                                    <span className="label-text text-lg">Add rating according to our service</span>
                                 </label>
                                 <input class="input text-xl  input-bordered w-48 max-w-xl my-2 block"  {...register("rating", {
                                     required: {
                                         value: true,
-                                        message: 'Please Input Product Quantity'
+                                        message: 'Please rating us 1 to 5'
                                     },
                                     min: {
                                         value: 1,
@@ -79,6 +80,19 @@ const AddReviw = () => {
                                 {errors.quantity?.type === 'required' && <span className='label-text-alt  text-xl  text-red-500'>{errors.quantity.message}</span>}
                                 {errors.quantity?.type === 'min' && <span className='label-text-alt text-xl  text-red-500'>{errors.quantity.message}</span>}
                                 {errors.quantity?.type === 'max' && <span className='label-text-alt  text-xl  text-red-500'>{errors.quantity.message}</span>}
+                            </div>
+                            <div className="block mx-auto ">
+                                <label className="label ">
+                                    <span className="label-text text-lg">Add review according to our service</span>
+                                </label>
+                                <input class="input text-xl  input-bordered w-48 max-w-xl my-2 block"  {...register("description", {
+                                    required: {
+                                        value: true,
+                                        message: 'Please add your review'
+                                    }
+                                })} />
+
+                                {errors.quantity?.type === 'required' && <span className='label-text-alt  text-xl  text-red-500'>{errors.quantity.message}</span>}
                             </div>
                             <input type="submit" value='Add Review' className='input bg-accent text-white' />
                         </form>

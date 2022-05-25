@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Social from './Social';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
@@ -8,6 +8,8 @@ import auth from '../../firebase.init';
 import Spinner from '../Spinner/Spinner';
 
 const Login = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
         signInWithEmailAndPassword,
@@ -21,6 +23,11 @@ const Login = () => {
     };
     if (loading) {
         return <Spinner></Spinner>
+    }
+    let from = location.state?.from?.pathname || "/";
+    if (user) {
+
+        navigate(from, { replace: true })
     }
     return (
         <div>
