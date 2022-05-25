@@ -20,7 +20,7 @@ const Tools = () => {
     return (
         <div>
             <h1 className='text-center text-4xl my-8'>Our Products</h1>
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 mx-4'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 mx-8'>
                 {
                     limitTools.map(tool => <div key={tool._id} className=' mx-auto my-8' >
                         <div className='card w-full bg-base-200 shadow-xl'>

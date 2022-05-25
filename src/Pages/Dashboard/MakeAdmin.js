@@ -7,8 +7,7 @@ import AdminTable from './AdminTable';
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
-    const [success, setSuccess] = useState(false)
-    const [admins, setAdmins] = useState([])
+    const [admins, setAdmins] = useState([]);
     const userEmail = useRef();
     const [adminData, setAdminData] = useState({});
     const url = `http://localhost:5000/users/makeadmin/${email}`;
@@ -16,13 +15,13 @@ const MakeAdmin = () => {
         event.preventDefault();
         const getEmail = userEmail.current.value
         setEmail(getEmail)
+        userEmail.current.value = "";
     }
     if (email) {
         fetch(url)
             .then(res => res.json())
             .then(data => {
                 setAdminData(data)
-                setSuccess(true)
             })
     }
 
@@ -30,9 +29,8 @@ const MakeAdmin = () => {
         fetch(`http://localhost:5000/users/admin/${email}`, {
             method: 'PUT',
         })
-          .then(res=>res.json())
+            .then(res => res.json())
             .then(data => {
-                setSuccess(false)
                 if (data.modifiedCount > 0) {
                     toast.success('Successfully add to admin panel', {
                         position: "top-center",
@@ -43,19 +41,20 @@ const MakeAdmin = () => {
                         draggable: true,
                         progress: undefined,
                     });
-                   
+
+                }
+                else {
+                    toast.error('Already an Admin', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
                 }
             })
-    }
-    let findAdmin
-    if (success) {
-        findAdmin = <div>
-            <p>{adminData?.email}</p>
-            <button onClick={makeAdmin}>make Admin</button>
-        </div>
-    }
-    else {
-        findAdmin = <></>
     }
 
 
@@ -65,14 +64,21 @@ const MakeAdmin = () => {
             .then(data => {
                 setAdmins(data)
             })
-    }, [admins])
+    }, [admins]);
+    let makingAdmin
+    if (adminData) {
+        makingAdmin = <p className='text-xl mx-2'>{adminData?.email}</p>
+    }
     return (
         <div>
-            {
-                findAdmin
-            }
-            <input type="email" className='w-2/4 py-2 m-2 rounded text-xl' ref={userEmail} />
-            <button onClick={getEmail} className='btn btn primary'>Add an Admin</button>
+            <input type="email" className='w-2/4 px-4 py-2 m-2 rounded text-xl' ref={userEmail} />
+            <button onClick={getEmail} className='btn primary'>Find a User</button>
+            <div className='flex my-8'>
+                {
+                    makingAdmin
+                }
+                <button className='btn btn-accent' onClick={makeAdmin}>make Admin</button>
+            </div>
             <div>
                 <div class="overflow-x-auto">
                     <table class="table w-full">
