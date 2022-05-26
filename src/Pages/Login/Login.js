@@ -6,8 +6,10 @@ import Social from './Social';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Spinner from '../Spinner/Spinner';
+import useAdmin from '../Hooks/useAdmin';
 
 const Login = () => {
+  
     const location = useLocation();
     const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -17,6 +19,7 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [isAdmin]=useAdmin(user)
     const onSubmit = data => {
         console.log(data);
         signInWithEmailAndPassword(data.email,data.password)
@@ -25,6 +28,9 @@ const Login = () => {
         return <Spinner></Spinner>
     }
     let from = location.state?.from?.pathname || "/";
+    if(isAdmin){
+        navigate('/dashboard')
+    }
     if (user) {
 
         navigate(from, { replace: true })

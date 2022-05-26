@@ -8,7 +8,7 @@ import Spinner from '../Spinner/Spinner';
 const Tool = ({ tool }) => {
     const [user, loading] = useAuthState(auth)
     const { name, img, price, quantity, minimumQuantity, description } = tool;
-    const email = user.email
+    const email = user?.email
     const [isAdmin] = useAdmin(email)
     if (loading) {
         return <Spinner></Spinner>

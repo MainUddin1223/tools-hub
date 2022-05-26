@@ -7,7 +7,6 @@ import auth from "../../firebase.init";
 
 const useTools = () => {
     const [tools, setTools] = useState([]);
-    const navigate = useNavigate()
     useEffect(() => {
         fetch('https://nameless-tor-88457.herokuapp.com/tools', {
             headers: {
@@ -16,7 +15,7 @@ const useTools = () => {
         })
             .then(res => res.json())
             .then(data => setTools(data))
-    }, [])
+    }, [tools])
     return [tools]
 }
 export default useTools
