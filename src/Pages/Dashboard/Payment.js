@@ -9,18 +9,18 @@ const Payment = () => {
     const { id } = useParams();
     const [order, setOrder] = useState({})
     useEffect(() => {
-        const url = `http://localhost:5000/orders/${id}`;
+        const url = `https://nameless-tor-88457.herokuapp.com/orders/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setOrder(data))
     }, [])
-    const { name, totalQuantity, _id, total, buyer } = order
+    const { name, orderedQuantity, email, _id, total, buyer } = order
     return (
         <div>
             <div className='shadow-xl w-3/4 mx-auto'>
                 <h1 className='text-2xl m-2'>Hello , {buyer}</h1>
                 <p className='text-xl m-2'>You have purchase {name}</p>
-                <p className='text-xl m-2'>The quantity is {totalQuantity}</p>
+                <p className='text-xl m-2'>The quantity is {orderedQuantity}</p>
                 <p className='text-xl m-2 font-bold'>Please pay ${total}</p>
 
             </div>
