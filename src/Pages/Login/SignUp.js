@@ -89,7 +89,7 @@ const SignUp = () => {
                         {errors.password?.type === 'required' && <span className='label-text-alt text-xl  lg:ml-8 text-red-500'>{errors.password.message}</span>}
                         {errors.password?.type === 'minLength' && <span className='label-text-alt text-xl lg:ml-8 text-red-500'>{errors.password.message}</span>}
                     </div>
-
+                    {error && <p className='text-xl my-2 text-center text-red-500'>You have already use this email</p>}
                     <input type='submit' value='Sign Up' class="input  input-bordered bg-accent mt-8 my-2 block mx-auto text-white text-xl w-full max-w-xl  " />
                     <div class="flex flex-col w-2/4 mx-auto my-4 border-opacity-50">
                         <div class="divider">OR</div>

@@ -1,7 +1,22 @@
 # Hm electronics
+[Hm electronics](https://hm-electronics.firebaseapp.com/)
 It is a electronics parts selling web application
+In this website , user can buy product 
+pay their bill
+admin feature is also available in the website
 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the project [Live Link](https://hm-electronics.firebaseapp.com/).
+In this Project used technologies are --
+
+* Tailwind css
+* Daisyui
+* React
+* Node js
+* Express js
+* Mongodb
+* Firebase
+
+
 
 

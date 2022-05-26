@@ -76,7 +76,7 @@ const Login = () => {
                         {errors.password?.type === 'required' && <span className='label-text-alt text-xl  lg:ml-8 text-red-500'>{errors.password.message}</span>}
                         {errors.password?.type === 'minLength' && <span className='label-text-alt text-xl lg:ml-8 text-red-500'>{errors.password.message}</span>}
                     </div>
-
+                    {error && <p className='text-xl my-2 text-center text-red-500'>Please check your email or password</p>}
                     <input type='submit' value='Login' class="input  input-bordered bg-accent mt-8 my-2 block mx-auto text-white text-xl w-full max-w-xl  " />
                     <p className='text-xl ml-6 my-4'>Forgat password? <span className='text-blue-500'>Reset password</span> </p>
                     <div class="flex flex-col w-2/4 mx-auto my-4 border-opacity-50">

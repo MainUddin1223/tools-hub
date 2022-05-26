@@ -20,6 +20,7 @@ import Footer from './Pages/Shared/Footer';
 import Navbar from './Pages/Shared/Navbar';
 import Portfolio from './Pages/Portfolio/Portfolio'
 import NotFound from './Pages/Shared/NotFound';
+import Payment from './Pages/Dashboard/Payment';
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
           </Route>
           <Route path="review" element={<AddReviw></AddReviw>}></Route>
           <Route path='order' element={<MyOrder></MyOrder>}></Route>
+          <Route path='payment/:id' element={<Payment></Payment>}></Route>
           <Route path='manageOrder' element={<ManageOrder></ManageOrder>}></Route>
           <Route path='addProduct' element={<AddAProduct></AddAProduct>}></Route>
           <Route path='manageProduct' element={<ManageProduct></ManageProduct>}></Route>

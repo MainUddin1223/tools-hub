@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Order = ({ order }) => {
     const { _id, buyer, email, date, name, orderedQuantity, total } = order
@@ -16,7 +17,7 @@ const Order = ({ order }) => {
                 <p className='font-bold'>Total Cost : {total}</p>
             </div>
             <div className='flex-auto mx-auto'>
-                <button className='btn btn-primary mt-4'>Pay Cost</button>
+                <Link to={`/dashboard/payment/${_id}`} className='btn btn-primary mt-4'>Pay Cost</Link>
             </div>
 
         </div>
