@@ -13,7 +13,7 @@ const AddReviw = () => {
         const rating = data.rating;
         const description = data.description
         const review = { name: name, rating: rating, description: description }
-        fetch('http://localhost:5000/review', {
+        fetch('https://nameless-tor-88457.herokuapp.com/review', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

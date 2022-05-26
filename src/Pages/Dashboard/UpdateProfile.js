@@ -16,7 +16,7 @@ const UpdateProfile = () => {
         const phone = data.phone;
         const education = data.education;
         const userData = { name: name, address: address, phone: phone, education: education }
-        fetch(`http://localhost:5000/users/profile/${email}`, {
+        fetch(`https://nameless-tor-88457.herokuapp.com/users/profile/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

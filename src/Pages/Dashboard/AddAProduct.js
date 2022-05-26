@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const AddAProduct = () => {
     const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
     const onSubmit = (data) => {
-        fetch('http://localhost:5000/tools', {
+        fetch('https://nameless-tor-88457.herokuapp.com/tools', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

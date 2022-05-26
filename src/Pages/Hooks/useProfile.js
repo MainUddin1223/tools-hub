@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 const useProfile = (user) => {
     const email = user?.email;
     const [userDetail, setUserDetail] = useState({});
-    const url = `http://localhost:5000/users/makeadmin/${email}`;
+    const url = `https://nameless-tor-88457.herokuapp.com/users/makeadmin/${email}`;
     useEffect(() => {
-        fetch(url,{
+        fetch(url, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }

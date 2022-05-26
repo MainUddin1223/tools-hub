@@ -9,7 +9,7 @@ const useTools = () => {
     const [tools, setTools] = useState([]);
     const navigate = useNavigate()
     useEffect(() => {
-        fetch('http://localhost:5000/tools', {
+        fetch('https://nameless-tor-88457.herokuapp.com/tools', {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }

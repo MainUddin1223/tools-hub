@@ -10,7 +10,7 @@ const MakeAdmin = () => {
     const [admins, setAdmins] = useState([]);
     const userEmail = useRef();
     const [adminData, setAdminData] = useState({});
-    const url = `http://localhost:5000/users/makeadmin/${email}`;
+    const url = `https://nameless-tor-88457.herokuapp.com/users/makeadmin/${email}`;
     const getEmail = (event) => {
         event.preventDefault();
         const getEmail = userEmail.current.value
@@ -26,7 +26,7 @@ const MakeAdmin = () => {
     }
 
     const makeAdmin = () => {
-        fetch(`http://localhost:5000/users/admin/${email}`, {
+        fetch(`https://nameless-tor-88457.herokuapp.com/users/admin/${email}`, {
             method: 'PUT',
         })
             .then(res => res.json())
@@ -59,7 +59,7 @@ const MakeAdmin = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/users/admin',)
+        fetch('https://nameless-tor-88457.herokuapp.com/users/admin',)
             .then(res => res.json())
             .then(data => {
                 setAdmins(data)

@@ -9,11 +9,11 @@ const MyOrder = () => {
     const email = user?.email;
     const [orders, setOrders] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/order/${email}`)
+        fetch(`https://nameless-tor-88457.herokuapp.com/order/${email}`)
             .then(res => res.json())
             .then(data => {
                 setOrders(data);
-                console.log('my order',data);
+                console.log('my order', data);
             })
     }, [user])
     if (loading) {

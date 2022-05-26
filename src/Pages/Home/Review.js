@@ -6,7 +6,7 @@ const Review = () => {
     const [review, setReview] = useState([]);
     const updatedReviews = [...review].reverse().slice(0, 6)
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://nameless-tor-88457.herokuapp.com/review')
             .then(res => res.json())
             .then(data => {
                 setReview(data)

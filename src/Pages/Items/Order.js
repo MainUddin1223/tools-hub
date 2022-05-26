@@ -11,7 +11,7 @@ const Order = () => {
     const [tool, setTool] = useState({})
     const navigate = useNavigate()
     const [user] = useAuthState(auth);
-    const url = `http://localhost:5000/tools/${orderId}`;
+    const url = `https://nameless-tor-88457.herokuapp.com/tools/${orderId}`;
     fetch(url)
         .then(res => res.json())
         .then(data => {
@@ -29,7 +29,7 @@ const Order = () => {
         const orderedQuantity = data.quantity;
         const total = price * orderedQuantity;
         const order = { buyer: buyerName, email: buyerEmail, date: date, name: name, orderedQuantity: orderedQuantity, total }
-        fetch(`http://localhost:5000/order`, {
+        fetch(`https://nameless-tor-88457.herokuapp.com/order`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
