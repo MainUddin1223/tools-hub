@@ -7,8 +7,8 @@ const CheckoutForm = ({ order }) => {
     const [cardError, setCardError] = useState('')
     const [success, setSuccess] = useState('')
     const [clientSecret, setClientSecret] = useState('')
-    const { name, totalQuantity, email, _id, buyer } = order;
-    const total = order?.total;
+    const { name, totalQuantity,email, _id,  buyer } = order;
+    const total=(order?.total);
     useEffect(
         () => {
             fetch('https://nameless-tor-88457.herokuapp.com/create-payment-intent', {
@@ -50,7 +50,7 @@ const CheckoutForm = ({ order }) => {
                     card: card,
                     billing_details: {
                         name: name,
-                        email: email
+                        email:email
                     },
                 },
             },
