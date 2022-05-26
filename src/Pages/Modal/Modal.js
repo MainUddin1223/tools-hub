@@ -1,16 +1,27 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const Modal = ({ deleteModal, setDeleteModal }) => {
     console.log(deleteModal);
     const { _id, name } = deleteModal;
     const handleRemove = () => {
-        const url = `http://localhost:5000/tools/${_id}`;
+        const url = `https://nameless-tor-88457.herokuapp.com/tools/${_id}`;
         fetch(url, {
             method: 'DELETE'
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                if(data.deletedCount===1){
+                    toast.success('Product removed Successfully', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                }
             })
     }
     return (
