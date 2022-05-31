@@ -19,7 +19,6 @@ const Tools = () => {
         return <Spinner></Spinner>
     }
     const limitTools = tools.slice(0, 6);
-    const toolsLength=limitTools.length
 
     return (
         <div>
@@ -31,7 +30,7 @@ const Tools = () => {
                             {index%3!==1 ? <img src={available} className='  ' alt="" /> : <img src={top_sales} alt="" />}
                         </div>
                         <figure className='z-40'><img src={`${tool.img}`} className='w-96 mx-auto ' alt={tool.name} /></figure>
-                        <div className='card w-full'>
+                        <div className='card w-full p-4'>
                             <div class="font-mono">
                                 <h2 class="text-4xl font-bold ">
                                     {tool.name}
@@ -39,9 +38,9 @@ const Tools = () => {
 
                                 <div className='text-xl my-2'>
                                     <p className='py-2'>{tool.description}</p>
-                                    <p className='py-2'>Available : {tool.quantity}</p>
-                                        <p className='py-2 font-bold'>Minimum Order : {tool.minimumQuantity} piece</p>
-                                        <p className='py-2 font-bold'>Price : $ {tool.price}</p>
+                                    <p className='py-2 text-2xl font-bold'>Available : {tool.quantity}</p>
+                                        <p className='py-2 text-2xl font-bold'>Minimum Order : {tool.minimumQuantity} piece</p>
+                                        <p className='py-2 text-2xl font-bold'>Price : $ {tool.price}</p>
                                 </div>
 
                                 <div class="card-actions ">
@@ -54,7 +53,9 @@ const Tools = () => {
                 }
 
             </div>
-            <Link to='/tools' className='block my-4 text-2xl text-center text-blue-500'>Explore more <FontAwesomeIcon icon={faArrowRight} /></Link>
+            <div className='mx-auto'>
+            <Link to='/tools' className='  block mx-auto  my-8 text-2xl text-center text-white'><span className='bg-primary py-2 px-8 rounded'>Explore more <FontAwesomeIcon icon={faArrowRight} /></span></Link>
+            </div>
         </div>
 
     );

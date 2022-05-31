@@ -53,15 +53,6 @@ const Navbar = () => {
             >
                 Dashboard
             </NavLink></li>}
-            {user && <li> <NavLink
-                to="/profile"
-                className={({ isActive }) =>
-                    isActive && 'border-2 border-red-500'
-                }
-            >
-                Profile
-            </NavLink></li>}
-
             {
                 !user &&
                 <li><Link to='/login'>Login</Link></li>
@@ -78,17 +69,38 @@ const Navbar = () => {
                         </label>
                         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 text-xl shadow bg-base-100 rounded-box w-52">
                             {navList}
+
                         </ul>
                     </div>
                     <img src='https://i.ibb.co/4Wqm9Z2/logo-removebg-preview.png' alt='logo' className='h-20 mx-4' />
+                </div>
+                <div class="navbar-end">
+                    <div class="dropdown">
+                        <label tabindex="0" class=" lg:hidden">
+                        <label for="my-modal-3"><img className='rounded-full w-8' src={user?.photoURL} alt="" /></label>
+                        </label>
+                    </div>
                 </div>
                 <div class="navbar-end hidden lg:flex ">
                     <ul class="menu menu-horizontal p-0 text-xl">
                         {navList}
                     </ul>
+
+                </div>
+                <label for="my-modal-3" class="hidden lg:flex"><img className='rounded-full w-16' src={user?.photoURL} alt="" /></label>
+            </div>
+            <div>
+
+            <input type="checkbox" id="my-modal-3" class="modal-toggle " />
+            <div class="modal">
+                <div class="modal-box  relative">
+                    <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <h3 class="text-lg font-bold">Congratulations random Interner user!</h3>
+                    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
                 </div>
             </div>
-        </div>
+        </div >
+        </div >
     );
 };
 
