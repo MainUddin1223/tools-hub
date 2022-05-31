@@ -4,8 +4,8 @@ import React from 'react';
 
 const Summary = () => {
     return (
-        <div className='w-3/4 mx-auto shadow my-16'>
-            <h1 className='text-center text-4xl my-8'>Our Business Statics</h1>
+        <div className='w-3/4 mx-auto shadow-2xl my-16 mt-32 font-mono'>
+            <h1 className='text-center text-5xl py-8'>Our Business Statics</h1>
             <div class="stats w-full ">
 
                 <div class="stat">
@@ -34,7 +34,7 @@ const Summary = () => {
                     </div>
                     <div class="stat-value">75%</div>
                     <div class="stat-title text-xl">Repeat Orders</div>
-                    <div class="stat-desc text-secondary text-xl">Consistently Increasing</div>
+                    <div class="stat-desc text-primary font-bold text-xl">Consistently Increasing</div>
                 </div>
 
             </div>

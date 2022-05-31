@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -21,13 +21,16 @@ const Dashboard = () => {
         {isAdmin && <li><Link to='addProduct'>Add Product</Link></li>}
         <li><Link to='updateProfile'>Update Profile</Link></li>
     </>
-    if (loading) {
-        return <Spinner></Spinner>
-    }
+    const [loader, setLoader] = useState(true);
+    useEffect(() => {
+        setTimeout(() => {
+            setLoader(false)
+        }, 1500)
+    }, [])
     if (!user) {
         navigate('/login')
     }
-    return (
+    return loader ? <Spinner></Spinner> : (
         <div class="drawer drawer-mobile">
 
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />

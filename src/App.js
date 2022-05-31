@@ -21,9 +21,18 @@ import Navbar from './Pages/Shared/Navbar';
 import Portfolio from './Pages/Portfolio/Portfolio'
 import NotFound from './Pages/Shared/NotFound';
 import Payment from './Pages/Dashboard/Payment';
+import { useEffect, useState } from 'react';
+import Spinner from './Pages/Spinner/Spinner';
+import Profile from './Pages/Home/Profile';
 
 function App() {
-  return (
+  const [loader, setLoader] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false)
+    }, 500)
+  }, [])
+  return loader ? (<Spinner></Spinner>) : (
     <div>
       <ToastContainer
         position="top-right"
@@ -59,6 +68,7 @@ function App() {
           <Route path='updateProfile' element={<UpdateProfile></UpdateProfile>}></Route>
         </Route>
         <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="/profile" element={<Profile></Profile>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
 
