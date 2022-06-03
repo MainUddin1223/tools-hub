@@ -16,6 +16,7 @@ const Review = () => {
     }, [])
     return (
         <div className='mx-8 my-12'>
+            <h1>hello</h1>
             <h1 className='text-4xl text-center my-8 '>Customer Feedback</h1>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 '>
                 {
