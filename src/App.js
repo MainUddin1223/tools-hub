@@ -25,6 +25,7 @@ import Payment from './Pages/Dashboard/Payment';
 import { useEffect, useState } from 'react';
 import Spinner from './Pages/Spinner/Spinner';
 import Profile from './Pages/Home/Profile';
+import PreviewItem from './Pages/Items/PreviewItem';
 
 function App() {
   const [loader, setLoader] = useState(true);
@@ -55,6 +56,9 @@ function App() {
         <Route path="/portfolio" element={<Portfolio></Portfolio>}></Route>
         <Route path="/order/:orderId" element={<RequireAuth>
           {<Order></Order>}
+        </RequireAuth>}></Route>
+        <Route path="/preview/:orderId" element={<RequireAuth>
+          {<PreviewItem></PreviewItem>}
         </RequireAuth>}></Route>
         <Route path="/dashboard" element={<Dashboard></Dashboard>}>
           <Route index element={<MyProfile></MyProfile>}>

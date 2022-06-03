@@ -8,7 +8,6 @@ const useToken = (user) => {
     useEffect(() => {
         const name = findUser?.displayName
         const email = findUser?.email;
-        console.log(name, email);
         const currentUser = { email: email, name: name };
         if (email) {
             fetch(`https://nameless-tor-88457.herokuapp.com/users/${email}`, {

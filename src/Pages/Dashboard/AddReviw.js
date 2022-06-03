@@ -9,11 +9,12 @@ const AddReviw = () => {
     const [user, loading] = useAuthState(auth)
 
     const onSubmit = (data) => {
-        const name = user?.name;
-        const img=user?.img;
+        console.log(user);
+        const name = user?.displayName;
+        const img = user?.photoURL;
         const rating = data.rating;
         const description = data.description
-        const review = { name: name, rating: rating, description: description ,img:img}
+        const review = { name: name, rating: rating, description: description, img: img }
         fetch('https://nameless-tor-88457.herokuapp.com/review', {
             method: "POST",
             headers: {
@@ -62,11 +63,27 @@ const AddReviw = () => {
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="block mx-auto ">
                                 <label className="label ">
-                                    <span className="label-text text-lg">Add rating according to our service</span>
+                                    <span className="label-text text-lg">Please say something about us</span>
                                 </label>
-                                <input class="input text-xl  input-bordered w-48 max-w-xl my-2 block"  {...register("rating", {
+                                <input type='text' class="input text-xl  input-bordered w-48 max-w-xl my-2 block"  {...register("description", {
                                     required: {
                                         value: true,
+                                        message: 'Please say something about us'
+                                    }
+                                })} />
+
+                                {errors.description?.type === 'required' && <span className='label-text-alt  text-xl  text-red-500'>{errors.description.message}</span>}
+                            </div>
+                            <div className="block mx-auto ">
+                                <label className="label ">
+                                    <span className="label-text text-lg">Rate us in 5</span>
+                                </label>
+                                <input type='number' class="input text-xl  input-bordered w-48 max-w-xl my-2 block"  {...register("rating", {
+                                    required: {
+                                        value: {
+                                            max: 5,
+                                            min: 1
+                                        },
                                         message: 'Please rating us 1 to 5'
                                     },
                                     min: {
@@ -78,22 +95,9 @@ const AddReviw = () => {
                                     }
                                 })} />
 
-                                {errors.quantity?.type === 'required' && <span className='label-text-alt  text-xl  text-red-500'>{errors.quantity.message}</span>}
-                                {errors.quantity?.type === 'min' && <span className='label-text-alt text-xl  text-red-500'>{errors.quantity.message}</span>}
-                                {errors.quantity?.type === 'max' && <span className='label-text-alt  text-xl  text-red-500'>{errors.quantity.message}</span>}
-                            </div>
-                            <div className="block mx-auto ">
-                                <label className="label ">
-                                    <span className="label-text text-lg">Add review according to our service</span>
-                                </label>
-                                <input class="input text-xl  input-bordered w-48 max-w-xl my-2 block"  {...register("description", {
-                                    required: {
-                                        value: true,
-                                        message: 'Please add your review'
-                                    }
-                                })} />
-
-                                {errors.quantity?.type === 'required' && <span className='label-text-alt  text-xl  text-red-500'>{errors.quantity.message}</span>}
+                                {errors.rating?.type === 'required' && <span className='label-text-alt  text-xl  text-red-500'>{errors.rating.message}</span>}
+                                {errors.rating?.type === 'min' && <span className='label-text-alt text-xl  text-red-500'>{errors.rating.message}</span>}
+                                {errors.rating?.type === 'max' && <span className='label-text-alt  text-xl  text-red-500'>{errors.rating.message}</span>}
                             </div>
                             <input type="submit" value='Add Review' className='input bg-accent text-white' />
                         </form>

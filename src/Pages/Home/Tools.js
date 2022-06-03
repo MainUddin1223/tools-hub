@@ -1,4 +1,4 @@
-import { faArrowAltCircleRight, faArrowRight, faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faArrowAltCircleRight, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -7,8 +7,6 @@ import auth from '../../firebase.init';
 import useAdmin from '../Hooks/useAdmin';
 import useTools from '../Hooks/useTools';
 import Spinner from '../Spinner/Spinner';
-import top_sales from '../../images/top-sales-removebg-preview.png'
-import available from '../../images/abailable-removebg-preview.png'
 import tagBanner from '../../images/tag_banner-removebg-preview.png'
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -23,7 +21,7 @@ const Tools = () => {
 
     return (
         <div>
-            <h1 className=' text-5xl my-8 ml-8 py-8 font-mono'>Available Products</h1>
+            <h1 className=' text-5xl my-8 ml-8 py-8 font-serif'>Available Products</h1>
 
             <div className="w-3/4 mx-auto">
                 <Swiper
@@ -45,8 +43,8 @@ const Tools = () => {
                     }}
                 >
                     {tools.map((tool) =>
-                        <SwiperSlide className=' relative  m-4  text-gray p-4 shadow-sm hover:shadow-xl bg-sky-200'>
-                            <Link to={`/order/${tool._id}`}>
+                        <SwiperSlide className=' relative  m-4  text-gray p-4 shadow-sm hover:shadow-xl bg-sky-200 rounded-xl'>
+                            <Link to={`/preview/${tool._id}`}>
                                 <div className='absolute -top-8 right-0 z-0'>
                                     <p className='absolute text-orange-900 top-8 right-4 pt-4 z-1 font-bold '>Available: {tool.quantity}</p>
                                     <img src={tagBanner} alt="" className='mt-0 w-56 h-28' />
