@@ -38,7 +38,7 @@ const Review = () => {
 
             </div>
 
-            <Swiper
+            {/* <Swiper
                 spaceBetween={50}
 
                 breakpoints={{
@@ -62,7 +62,7 @@ const Review = () => {
 
 
                 </SwiperSlide>)}
-            </Swiper>
+            </Swiper> */}
         </div>
     );
 };
