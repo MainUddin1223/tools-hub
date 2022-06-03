@@ -16,9 +16,6 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
-            <div className='bg-cover bg-center py-16' style={{ backgroundImage: `url(${banner})` }}>
-<h1 className='text-5xl text-right mr-16 font-mono font-bold text-primary text-mono'>Available 24/7</h1>
-            </div>
         </div>
     );
 };

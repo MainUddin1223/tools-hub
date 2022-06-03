@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
+import 'swiper/css';
 import AddAProduct from './Pages/Dashboard/AddAProduct';
 import AddReviw from './Pages/Dashboard/AddReviw';
 import Dashboard from './Pages/Dashboard/Dashboard';
