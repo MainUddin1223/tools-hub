@@ -1,10 +1,12 @@
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
+import Swiper, { Pagination } from 'swiper';
+import { SwiperSlide } from 'swiper/react';
 
 const Review = () => {
     const [review, setReview] = useState([]);
-    const updatedReviews = [...review].reverse().slice(0, 6)
+    const updatedReviews = [...review].reverse()
     useEffect(() => {
         fetch('https://nameless-tor-88457.herokuapp.com/review')
             .then(res => res.json())
@@ -12,7 +14,6 @@ const Review = () => {
                 setReview(data)
             })
     }, [])
-    console.log(updatedReviews);
     return (
         <div className='mx-8 my-12'>
             <h1 className='text-4xl text-center my-8 '>Customer Feedback</h1>
@@ -36,6 +37,32 @@ const Review = () => {
                 }
 
             </div>
+
+            <Swiper
+                spaceBetween={50}
+
+                breakpoints={{
+                    400: {
+                        width: 400,
+                        slidesPerView: 1,
+                    },
+                    768: {
+                        width: 768,
+                        slidesPerView: 3,
+                    },
+                    1200: {
+                        width: 1200,
+                        slidesPerView: 4,
+                    },
+                }}
+                modules={[Pagination]}
+                className="mySwiper"
+            >
+                {updatedReviews.map = (review => <SwiperSlide key={review._id}>
+
+
+                </SwiperSlide>)}
+            </Swiper>
         </div>
     );
 };

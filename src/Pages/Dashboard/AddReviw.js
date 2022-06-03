@@ -10,9 +10,10 @@ const AddReviw = () => {
 
     const onSubmit = (data) => {
         const name = user?.name;
+        const img=user?.img;
         const rating = data.rating;
         const description = data.description
-        const review = { name: name, rating: rating, description: description }
+        const review = { name: name, rating: rating, description: description ,img:img}
         fetch('https://nameless-tor-88457.herokuapp.com/review', {
             method: "POST",
             headers: {

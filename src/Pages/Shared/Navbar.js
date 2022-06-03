@@ -16,7 +16,7 @@ const Navbar = () => {
             <li> <NavLink
                 to="/"
                 className={({ isActive }) =>
-                    isActive && 'border-2 border-red-500'
+                    isActive && 'border-2 border-sky-500'
                 }
             >
                 Home
@@ -24,7 +24,7 @@ const Navbar = () => {
             <li> <NavLink
                 to="/tools"
                 className={({ isActive }) =>
-                    isActive && 'border-2 border-red-500'
+                    isActive && 'border-2 border-sky-500'
                 }
             >
                 Tools
@@ -32,7 +32,7 @@ const Navbar = () => {
             <li> <NavLink
                 to="/portfolio"
                 className={({ isActive }) =>
-                    isActive && 'border-2 border-red-500'
+                    isActive && 'border-2 border-sky-500'
                 }
             >
                 Portfolio
@@ -40,7 +40,7 @@ const Navbar = () => {
             <li> <NavLink
                 to="/blogs"
                 className={({ isActive }) =>
-                    isActive && 'border-2 border-red-500'
+                    isActive && 'border-2 border-sky-500'
                 }
             >
                 Blogs
@@ -48,7 +48,7 @@ const Navbar = () => {
             {user && <li> <NavLink
                 to="/dashboard"
                 className={({ isActive }) =>
-                    isActive && 'border-2 border-red-500'
+                    isActive && 'border-2 border-sky-500'
                 }
             >
                 Dashboard

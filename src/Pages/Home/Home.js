@@ -2,9 +2,9 @@ import React from 'react';
 import Banner from './Banner';
 import Contact from './Contact';
 import Gellary from './Gellary';
+import Heros from './Heros';
 import Parallox from './Parallox';
 import Review from './Review';
-import ShowOff from './ShowOff';
 import Summary from './Summary';
 import Tools from './Tools';
 
@@ -12,11 +12,11 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <ShowOff></ShowOff>
-            <Parallox></Parallox>
             <Summary></Summary>
-            <Gellary></Gellary>
             <Tools></Tools>
+            <Parallox></Parallox>
+            <Heros></Heros>
+            <Gellary></Gellary>
 
             <Review></Review>
             <Contact></Contact>
