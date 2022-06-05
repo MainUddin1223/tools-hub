@@ -21,7 +21,6 @@ const MyProfile = () => {
     if (loading) {
         return <Spinner></Spinner>
     }
-    console.log(userDetail);
     return (
         <div className='md:flex justify-center mx-auto md:mx-8 mt-16'>
             <div className='m-24 '>

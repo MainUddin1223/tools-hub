@@ -1,12 +1,29 @@
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import Spinner from '../Spinner/Spinner';
 
 const Navbar = () => {
-    const [user] = useAuthState(auth);
     const navigate = useNavigate()
+    const [user, loading] = useAuthState(auth)
+    const userEmail = user?.email;
+    const [userDetail, setUserDetail] = useState({});
+    const { name, email, address, education, phone, img } = userDetail
+    // const url = `https://nameless-tor-88457.herokuapp.com/users/profile/${userEmail}`;
+    // useEffect(() => {
+    //     fetch(url)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setUserDetail(data)
+    //         })
+    // }, [user, url])
+    // if (loading) {
+    //     return <Spinner></Spinner>
+    // }
     const logout = () => {
         signOut(auth)
         navigate('/login')
@@ -54,9 +71,12 @@ const Navbar = () => {
                 Dashboard
             </NavLink></li>}
             {
-                !user &&
-                <li><Link to='/login'>Login</Link></li>
+                !user ?<li><Link to='/login'>Login</Link></li>:
+               <li> <Link to='/login' onClick={logout}>Logout</Link></li>
             }
+            <li>
+
+            </li>
         </>
 
     return (
@@ -77,7 +97,7 @@ const Navbar = () => {
                 <div class="navbar-end">
                     <div class="dropdown">
                         <label tabindex="0" class=" lg:hidden">
-                        <label for="my-modal-3"><img className='rounded-full w-8' src={user?.photoURL} alt="" /></label>
+                            {user?.photoURL ? <label for="my-modal-3"><img className='rounded-full w-8' src={user?.photoURL} alt="" /></label> : <FontAwesomeIcon icon={faUser} />}
                         </label>
                     </div>
                 </div>
@@ -87,19 +107,33 @@ const Navbar = () => {
                     </ul>
 
                 </div>
-                <label for="my-modal-3" class="hidden lg:flex"><img className='rounded-full w-16' src={user?.photoURL} alt="" /></label>
+                {user && <label tabindex="0" class="hidden lg:flex">
+                    {user?.photoURL ? <label for="my-modal-3"><img className='rounded-full w-8' src={user?.photoURL} alt="" /></label > : <label for="my-modal-3"><FontAwesomeIcon icon={faUser} className='text-2xl p-4 bg-white rounded-full' /></label >}
+
+                </label>}
             </div>
             <div>
 
-            <input type="checkbox" id="my-modal-3" class="modal-toggle " />
-            <div class="modal">
-                <div class="modal-box  relative">
-                    <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 class="text-lg font-bold">Congratulations random Interner user!</h3>
-                    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-                </div>
-            </div>
-        </div >
+                {/* <input type="checkbox" id="my-modal-3" class="modal-toggle " />
+                <div class="modal">
+                    <div class="modal-box relative h-96">
+                        <div className='ml-4 '>
+                            {user?.photoURL ?<img className='mx-auto rounded-full w-16 block' src={user?.photoURL} alt="" /> : <FontAwesomeIcon icon={faUser} className='text-5xl bg-accent text-white p-4 rounded-full block mx-auto'/>}
+                            <h1 className='text-2xl font-bold my-4'>{name ? name : 'User'}</h1>
+                            <p className='text-xl my-2'>Address : {address}</p>
+                            <p className='text-xl my-2'>Email : {email}</p>
+                            <p className='text-xl my-2'>Number : {phone}</p>
+                        </div>
+                        <label onClick={logout} for="my-modal-3" class="  right-2 top-2">
+                            Logout
+                        </label>
+                        <label onClick={ navigate('/')}  for="my-modal-3" class="  right-2 top-2">
+                            Logout
+                        </label>
+                        <label for="my-modal-3" class="btn btn-sm right-4 absolute top-4">X</label>
+                    </div>
+                </div> */}
+            </div >
         </div >
     );
 };

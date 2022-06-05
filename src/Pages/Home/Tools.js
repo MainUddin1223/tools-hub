@@ -44,7 +44,7 @@ const Tools = () => {
                 >
                     {tools.map((tool) =>
                         <SwiperSlide className=' relative  m-4  text-gray p-4 shadow-sm hover:shadow-xl bg-sky-200 rounded-xl'>
-                            <Link to={`/preview/${tool._id}`}>
+                            <Link to={`/order/${tool._id}`}>
                                 <div className='absolute -top-8 right-0 z-0'>
                                     <p className='absolute text-orange-900 top-8 right-4 pt-4 z-1 font-bold '>Available: {tool.quantity}</p>
                                     <img src={tagBanner} alt="" className='mt-0 w-56 h-28' />
