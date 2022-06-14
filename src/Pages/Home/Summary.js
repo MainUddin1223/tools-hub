@@ -2,11 +2,15 @@ import { faAngleDoubleUp, faArrowUp, faBasketShopping } from '@fortawesome/free-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CountUp from 'react-countup';
 import React from 'react';
+import graph from '../../images/graph.png'
+import safety from '../../images/safety.jpg'
 
 const Summary = () => {
     return (
-        <div className='w-3/4 mx-auto shadow-2xl my-16 mt-32 font-serif'>
+       <div>
+         <div className='md:w-3/4 mx-2 md:mx-auto shadow-2xl my-16 mt-32 font-sans'>
             <h1 className='text-center text-5xl py-8'>Our Business Statics</h1>
+            <img src={graph} alt="" className='mx-auto'/>
             <div class="stats w-full ">
 
                 <div class="stat">
@@ -48,7 +52,7 @@ const Summary = () => {
                         </div>
                     </div>
                     <div class="stat-value flex">
-                        <CountUp start={0} end={75} delay={2}>
+                        <CountUp start={0} end={75} delay={0}>
                             {({ countUpRef }) => (
                                 <div>
                                     <span ref={countUpRef} />
@@ -62,6 +66,10 @@ const Summary = () => {
 
             </div>
         </div >
+      <div className=' relative h-20'>
+      <img src={safety} className=" absolute right-0 w-full md:w-2/4 " alt="" />
+      </div>
+       </div>
 
     );
 };

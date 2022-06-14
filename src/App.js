@@ -27,7 +27,9 @@ import Spinner from './Pages/Spinner/Spinner';
 import Profile from './Pages/Home/Profile';
 import PreviewItem from './Pages/Items/PreviewItem';
 
+
 function App() {
+
   const [loader, setLoader] = useState(true);
   useEffect(() => {
     setTimeout(() => {

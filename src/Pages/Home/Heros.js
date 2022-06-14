@@ -44,7 +44,7 @@ const Heros = () => {
         },
     ]
     return (
-        <div className='my-16 font-serif '>
+        <div className='my-16 font-sans '>
             <div className='text-center font-bold'>
                 <h1 className=' text-4xl py-8'>Our Heros</h1>
                 <p className='pb-8 text-xl text-orange-900'>Our heros take our company next level . They are our real hero</p>

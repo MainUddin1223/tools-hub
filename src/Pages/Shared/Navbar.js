@@ -71,8 +71,8 @@ const Navbar = () => {
                 Dashboard
             </NavLink></li>}
             {
-                !user ?<li><Link to='/login'>Login</Link></li>:
-               <li> <Link to='/login' onClick={logout}>Logout</Link></li>
+                !user ? <li><Link to='/login'>Login</Link></li> :
+                    <li> <Link to='/login' onClick={logout}>Logout</Link></li>
             }
             <li>
 
@@ -80,10 +80,10 @@ const Navbar = () => {
         </>
 
     return (
-        <div className='bg-sky-200 px-8 sticky top-0 z-50'>
-            <div class="navbar font-serif">
+        <div className='text-white font-bold px-8 bg-accent sticky top-0 z-50'>
+            <div class="navbar font-sans">
                 <div class="navbar-start">
-                    <div class="dropdown">
+                    <div class="dropdown text-black">
                         <label tabindex="0" class="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
@@ -96,9 +96,11 @@ const Navbar = () => {
                 </div>
                 <div class="navbar-end">
                     <div class="dropdown">
-                        <label tabindex="0" class=" lg:hidden">
-                            {user?.photoURL ? <label for="my-modal-3"><img className='rounded-full w-8' src={user?.photoURL} alt="" /></label> : <FontAwesomeIcon icon={faUser} />}
-                        </label>
+                        {
+                            user && <label tabindex="0" class=" lg:hidden">
+                                {user?.photoURL ? <label for="my-modal-3"><img className='rounded-full w-16' src={user?.photoURL} alt="" /></label> : <FontAwesomeIcon icon={faUser} className='text-3xl p-4 bg-white rounded-full' />}
+                            </label>
+                        }
                     </div>
                 </div>
                 <div class="navbar-end hidden lg:flex ">
@@ -108,7 +110,7 @@ const Navbar = () => {
 
                 </div>
                 {user && <label tabindex="0" class="hidden lg:flex">
-                    {user?.photoURL ? <label for="my-modal-3"><img className='rounded-full w-8' src={user?.photoURL} alt="" /></label > : <label for="my-modal-3"><FontAwesomeIcon icon={faUser} className='text-2xl p-4 bg-white rounded-full' /></label >}
+                    {user?.photoURL ? <label for="my-modal-3"><img className='rounded-full w-16' src={user?.photoURL} alt="" /></label > : <label for="my-modal-3"><FontAwesomeIcon icon={faUser} className='text-3xl p-4 bg-white rounded-full' /></label >}
 
                 </label>}
             </div>

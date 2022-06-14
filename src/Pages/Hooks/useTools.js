@@ -8,7 +8,11 @@ import auth from "../../firebase.init";
 
 const useTools = () => {
     const { data: tools, isLoading, error, isFetching } = useQuery('tool', () => fetch('https://nameless-tor-88457.herokuapp.com/tools', {
+        headers: {
+            'content-type': 'application/json',
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        },
     }).then(res => res.json()));
-    return [tools, isLoading,isFetching]
+    return [tools, isLoading, isFetching]
 }
 export default useTools

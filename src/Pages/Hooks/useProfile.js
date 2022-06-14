@@ -15,7 +15,7 @@ const useProfile = (user) => {
             .then(data => {
                 setUserDetail(data)
             })
-    }, [user])
+    }, [url])
     return [userDetail]
 }
 export default useProfile

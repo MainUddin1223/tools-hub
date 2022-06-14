@@ -17,8 +17,9 @@ const Review = () => {
     console.log(updatedReviews);
     const ratingStar = [faStar, faStar, faStar, faStar, faStar]
     return (
-        <div className='mx-8 my-12 font-serif mt-16'>
-            <h1 className='text-5xl my-16 '>Customer Feedback</h1>
+        <div className='mx-8 my-12 font-sans mt-16'>
+            <h1 className='text-5xl my-16 text-center font-bold'>Our happy customers</h1>
+            
             <div className='w-3/4 mx-auto'>
 
                 <Swiper
@@ -42,7 +43,7 @@ const Review = () => {
                     {updatedReviews.map((tool) =>
                         <SwiperSlide key={tool._id} className=' m-4  text-gray p-4 shadow-sm hover:shadow-xl bg-sky-100 rounded-xl'>
                             <div className='h-96'>
-                                {tool?.img ? <img src={tool.img} alt='' className='rounded-full mx-auto'/> : <FontAwesomeIcon icon={faUser} className=" mx-auto block text-5xl text-white bg-accent p-4 rounded-full" />}
+                                {tool?.img ? <img src={tool.img} alt='' className='rounded-full mx-auto' /> : <FontAwesomeIcon icon={faUser} className=" mx-auto block text-5xl text-white bg-accent p-4 rounded-full" />}
                                 <div className='text-center my-4'>
                                     {tool?.name ? <h2 class="text-2xl text-center py-4">{tool?.name}</h2> :
                                         <h2 class="text-2xl text-center py-4">User</h2>}
