@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
+import Scrol from '../Shared/Scroll';
 
 const Order = () => {
     const { orderId } = useParams();
@@ -52,6 +53,7 @@ const Order = () => {
     };
     return (
         <div>
+            <Scrol></Scrol>
             <div className=' w-3/4 mx-auto shadow-xl '>
                 <h1 class="text-2xl font-bold text-center my-8"> Order preview</h1>
                 <div class="hero">

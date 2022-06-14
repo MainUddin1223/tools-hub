@@ -3,6 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useAdmin from '../Hooks/useAdmin';
+import Scrol from '../Shared/Scroll';
 import Spinner from '../Spinner/Spinner';
 
 const Dashboard = () => {
@@ -32,7 +33,7 @@ const Dashboard = () => {
     }
     return loader ? <Spinner></Spinner> : (
         <div class="drawer drawer-mobile">
-
+<Scrol></Scrol>
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
 
             <div class="drawer-content flex flex-col ">

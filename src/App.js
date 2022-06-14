@@ -34,7 +34,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setLoader(false)
-    }, 500)
+    }, 1000)
   }, [])
   return loader ? (<Spinner></Spinner>) : (
     <div>
