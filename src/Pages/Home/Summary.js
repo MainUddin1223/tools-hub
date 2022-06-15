@@ -8,7 +8,7 @@ import safety from '../../images/safety.jpg'
 const Summary = () => {
     return (
        <div>
-         <div className='md:w-3/4 mx-2 md:mx-auto shadow-2xl my-16 mt-32 font-sans'>
+         <div className='md:w-3/4 mx-2 md:mx-auto  my-16 mt-32 font-sans'>
             <h1 className='text-center text-5xl py-8'>Our Business Statics</h1>
             <img src={graph} alt="" className='mx-auto'/>
             <div class="stats w-full ">

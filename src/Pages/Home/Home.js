@@ -11,7 +11,7 @@ import Tools from './Tools';
 
 const Home = () => {
     return (
-        <div className='relative'>
+        <div className='overflow-x-hidden'>
             <Banner></Banner>
             <Scrol></Scrol>
             <Gellary></Gellary>

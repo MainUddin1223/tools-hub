@@ -26,6 +26,7 @@ import { useEffect, useState } from 'react';
 import Spinner from './Pages/Spinner/Spinner';
 import Profile from './Pages/Home/Profile';
 import PreviewItem from './Pages/Items/PreviewItem';
+import Top from './Pages/Shared/Top';
 
 
 function App() {
@@ -52,7 +53,9 @@ function App() {
       {/* Same as */}
       <ToastContainer />
       <Navbar></Navbar>
+      <Top>
       <Routes>
+
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/tools" element={<AllTools></AllTools>}></Route>
         <Route path="/portfolio" element={<Portfolio></Portfolio>}></Route>
@@ -78,9 +81,9 @@ function App() {
         <Route path="/profile" element={<Profile></Profile>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
-
+  
       </Routes>
-
+      </Top>
       <Footer></Footer>
     </div>
   );
