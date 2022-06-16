@@ -81,44 +81,44 @@ const Navbar = () => {
 
     return (
         <div className='text-white font-bold px-8 bg-accent sticky top-0 z-50'>
-            <div class="navbar font-sans">
-                <div class="navbar-start">
-                    <div class="dropdown text-black">
-                        <label tabindex="0" class="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            <div className="navbar font-sans">
+                <div className="navbar-start">
+                    <div className="dropdown text-black">
+                        <label tabIndex="0" className="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 text-xl shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 text-xl shadow bg-base-100 rounded-box w-52">
                             {navList}
 
                         </ul>
                     </div>
                     <img src='https://i.ibb.co/4Wqm9Z2/logo-removebg-preview.png' alt='logo' className='h-20 mx-4' />
                 </div>
-                <div class="navbar-end">
-                    <div class="dropdown">
+                <div className="navbar-end">
+                    <div className="dropdown">
                         {
-                            user && <label tabindex="0" class=" lg:hidden">
-                                {user?.photoURL ? <label for="my-modal-3"><img className='rounded-full w-16' src={user?.photoURL} alt="" /></label> : <FontAwesomeIcon icon={faUser} className='text-3xl p-4 bg-white rounded-full' />}
+                            user && <label tabIndex="0" className=" lg:hidden">
+                                {user?.photoURL ? <label htmlFor="my-modal-3"><img className='rounded-full w-16' src={user?.photoURL} alt="" /></label> : <FontAwesomeIcon icon={faUser} className='text-3xl p-4 bg-white text-black rounded-full' />}
                             </label>
                         }
                     </div>
                 </div>
-                <div class="navbar-end hidden lg:flex ">
-                    <ul class="menu menu-horizontal p-0 text-xl">
+                <div className="navbar-end hidden lg:flex ">
+                    <ul className="menu menu-horizontal p-0 text-xl">
                         {navList}
                     </ul>
 
                 </div>
-                {user && <label tabindex="0" class="hidden lg:flex">
-                    {user?.photoURL ? <label for="my-modal-3"><img className='rounded-full w-16' src={user?.photoURL} alt="" /></label > : <label for="my-modal-3"><FontAwesomeIcon icon={faUser} className='text-3xl p-4 bg-white rounded-full' /></label >}
+                {user && <label tabIndex="0" className="hidden lg:flex">
+                    {user?.photoURL ? <label htmlFor="my-modal-3"><img className='rounded-full w-16' src={user?.photoURL} alt="" /></label > : <label htmlFor="my-modal-3"><FontAwesomeIcon icon={faUser} className='text-3xl p-4 bg-white rounded-full text-black' /></label >}
 
                 </label>}
             </div>
             <div>
 
-                {/* <input type="checkbox" id="my-modal-3" class="modal-toggle " />
-                <div class="modal">
-                    <div class="modal-box relative h-96">
+                {/* <input type="checkbox" id="my-modal-3" className="modal-toggle " />
+                <div className="modal">
+                    <div className="modal-box relative h-96">
                         <div className='ml-4 '>
                             {user?.photoURL ?<img className='mx-auto rounded-full w-16 block' src={user?.photoURL} alt="" /> : <FontAwesomeIcon icon={faUser} className='text-5xl bg-accent text-white p-4 rounded-full block mx-auto'/>}
                             <h1 className='text-2xl font-bold my-4'>{name ? name : 'User'}</h1>
@@ -126,13 +126,13 @@ const Navbar = () => {
                             <p className='text-xl my-2'>Email : {email}</p>
                             <p className='text-xl my-2'>Number : {phone}</p>
                         </div>
-                        <label onClick={logout} for="my-modal-3" class="  right-2 top-2">
+                        <label onClick={logout} htmlFor="my-modal-3" className="  right-2 top-2">
                             Logout
                         </label>
-                        <label onClick={ navigate('/')}  for="my-modal-3" class="  right-2 top-2">
+                        <label onClick={ navigate('/')}  htmlFor="my-modal-3" className="  right-2 top-2">
                             Logout
                         </label>
-                        <label for="my-modal-3" class="btn btn-sm right-4 absolute top-4">X</label>
+                        <label htmlFor="my-modal-3" className="btn btn-sm right-4 absolute top-4">X</label>
                     </div>
                 </div> */}
             </div >

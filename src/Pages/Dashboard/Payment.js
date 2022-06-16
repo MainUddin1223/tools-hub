@@ -24,8 +24,8 @@ const Payment = () => {
                 <p className='text-xl m-2 font-bold'>Please pay ${total}</p>
 
             </div>
-            <div class="card flex-shrink-0 mx-auto w-50 max-w-md mt-4 shadow-md bg-base-100">
-                <div class="card-body">
+            <div className="card flex-shrink-0 mx-auto w-50 max-w-md mt-4 shadow-md bg-base-100">
+                <div className="card-body">
                     <Elements stripe={stripePromise}>
                         <CheckoutForm order={order} />
                     </Elements>

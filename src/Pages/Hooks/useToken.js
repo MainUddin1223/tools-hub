@@ -3,15 +3,17 @@ import { useEffect, useState } from "react"
 const useToken = (user) => {
     const [token, setToken] = useState('');
     const findUser = user?.user;
-    console.log(findUser);
-    console.log(findUser?.displayName);
     useEffect(() => {
         const name = findUser?.displayName
         const email = findUser?.email;
-        const currentUser = { email: email, name: name };
+        const image = findUser?.photoURL;
+        const currentUser = { email: email, name: name, image: image };
         if (email) {
             fetch(`https://nameless-tor-88457.herokuapp.com/users/${email}`, {
                 method: "PUT",
+                headers: {
+                    'content-type': 'application/json'
+                },
                 body: JSON.stringify(currentUser)
             })
                 .then(res => res.json())

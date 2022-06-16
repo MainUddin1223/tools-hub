@@ -53,7 +53,7 @@ function App() {
       {/* Same as */}
       <ToastContainer />
       <Navbar></Navbar>
-      <Top>
+    
       <Routes>
 
         <Route path="/" element={<Home></Home>}></Route>
@@ -83,7 +83,6 @@ function App() {
         <Route path="*" element={<NotFound></NotFound>}></Route>
   
       </Routes>
-      </Top>
       <Footer></Footer>
     </div>
   );

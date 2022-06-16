@@ -1,4 +1,4 @@
-import { updateProfile } from 'firebase/auth';
+import { signOut, updateProfile } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
@@ -24,27 +24,25 @@ const SignUp = () => {
         const displayName = data.name;
         await createUserWithEmailAndPassword(data.email, data.password)
         await updateProfile({ displayName });
+
     };
-    const [token] = useToken(user)
     if (loading) {
         return <Spinner></Spinner>
     }
-
-    let from = location.state?.from?.pathname || "/";
     if (user) {
-
-        navigate(from, { replace: true })
+        signOut(auth)
+        navigate('/login')
     }
     return (
         <div>
-            <div class="card lg:w-2/4 mx-auto p-4 my-16 bg-base-100 shadow-xl">
+            <div className="card lg:w-2/4 mx-auto p-4 my-16 bg-base-100 shadow-xl">
                 <h1 className='text-center text-3xl my-8'>Create an Account</h1>
                 <form onSubmit={handleSubmit(onSubmit)} className=' w-3/4 mx-auto'>
                     <div className="block mx-auto ">
                         <label className="label lg:ml-8">
                             <span className="label-text text-xl">Name</span>
                         </label>
-                        <input placeholder='Your Name' class="input text-xl mx-auto input-bordered w-full max-w-xl my-2 block"  {...register("name", {
+                        <input placeholder='Your Name' className="input text-xl mx-auto input-bordered w-full max-w-xl my-2 block"  {...register("name", {
                             required: {
                                 value: true,
                                 message: 'Name is required'
@@ -56,7 +54,7 @@ const SignUp = () => {
                         <label className="label lg:ml-8">
                             <span className="label-text text-xl">Email</span>
                         </label>
-                        <input placeholder='Your Email' class="input text-xl mx-auto input-bordered w-full max-w-xl my-2 block"  {...register("email", {
+                        <input placeholder='Your Email' className="input text-xl mx-auto input-bordered w-full max-w-xl my-2 block"  {...register("email", {
                             required: {
                                 value: true,
                                 message: 'Email is required'
@@ -75,7 +73,7 @@ const SignUp = () => {
                         <label className="label">
                             <span className="label-text text-xl lg:ml-8">Password</span>
                         </label>
-                        <input type='current-password' placeholder='Your Password' class="input text-xl input-bordered block mx-auto w-full max-w-xl my-2 "  {...register("password", {
+                        <input type='current-password' placeholder='Your Password' className="input text-xl input-bordered block mx-auto w-full max-w-xl my-2 "  {...register("password", {
                             required: {
                                 value: true,
                                 message: 'Password is required'
@@ -89,9 +87,9 @@ const SignUp = () => {
                         {errors.password?.type === 'minLength' && <span className='label-text-alt text-xl lg:ml-8 text-red-500'>{errors.password.message}</span>}
                     </div>
                     {error && <p className='text-xl my-2 text-center text-red-500'>You have already use this email</p>}
-                    <input type='submit' value='Sign Up' class="input  input-bordered bg-accent mt-8 my-2 block mx-auto text-white text-xl w-full max-w-xl  " />
-                    <div class="flex flex-col w-2/4 mx-auto my-4 border-opacity-50">
-                        <div class="divider">OR</div>
+                    <input type='submit' value='Sign Up' className="input  input-bordered bg-accent mt-8 my-2 block mx-auto text-white text-xl w-full max-w-xl  " />
+                    <div className="flex flex-col w-2/4 mx-auto my-4 border-opacity-50">
+                        <div className="divider">OR</div>
                     </div>
                     <Social></Social>
                 </form>

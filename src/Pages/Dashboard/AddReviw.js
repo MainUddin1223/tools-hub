@@ -56,16 +56,16 @@ const AddReviw = () => {
     return (
         <div>
             <h1 className='text-center text-4xl my-8'>Add a review</h1>
-            <div class="card w-96 bg-base-100 shadow-xl">
-                <div class="card-body">
-                    <h2 class="card-title">{user?.name}</h2>
-                    <div class="card-actions justify-center">
+            <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card-body">
+                    <h2 className="card-title">{user?.name}</h2>
+                    <div className="card-actions justify-center">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="block mx-auto ">
                                 <label className="label ">
                                     <span className="label-text text-lg">Please say something about us</span>
                                 </label>
-                                <input type='text' class="input text-xl  input-bordered w-48 max-w-xl my-2 block"  {...register("description", {
+                                <input type='text' className="input text-xl  input-bordered w-48 max-w-xl my-2 block"  {...register("description", {
                                     required: {
                                         value: true,
                                         message: 'Please say something about us'
@@ -78,7 +78,7 @@ const AddReviw = () => {
                                 <label className="label ">
                                     <span className="label-text text-lg">Rate us in 5</span>
                                 </label>
-                                <input type='number' class="input text-xl  input-bordered w-48 max-w-xl my-2 block"  {...register("rating", {
+                                <input type='number' className="input text-xl  input-bordered w-48 max-w-xl my-2 block"  {...register("rating", {
                                     required: {
                                         value: {
                                             max: 5,

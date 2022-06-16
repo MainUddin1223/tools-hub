@@ -24,7 +24,7 @@ const MyProfile = () => {
     return (
         <div className='md:flex justify-center mx-auto md:mx-8 mt-16'>
             <div className='m-24 '>
-                {img ? <img src="" alt="" className='w-48' /> : <FontAwesomeIcon icon={faUser} className="text-9xl" />}
+                {img ? <img src={img} alt="" className='w-48' /> : <FontAwesomeIcon icon={faUser} className="text-9xl" />}
             </div>
             <div className='m-8'>
                 <h1 className='text-5xl my-4 uppercase'> {name}</h1>

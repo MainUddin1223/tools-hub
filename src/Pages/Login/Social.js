@@ -18,7 +18,7 @@ const Social = () => {
     const [token] = useToken(user)
     let from = location.state?.from?.pathname || "/";
     if (user) {
-        navigate('/dashboard')
+        navigate(from, { replace: true })
     }
     return (
 
@@ -26,7 +26,7 @@ const Social = () => {
             {
                 loading && <Spinner></Spinner>
             }
-            <button onClick={handleGoogle} class="input text-xl input-bordered w-full max-w-xl my-2 block mx-auto bg-secondary text-white"> Continue with Google</button>
+            <button onClick={handleGoogle} className="input text-xl input-bordered w-full max-w-xl my-2 block mx-auto bg-secondary text-white"> Continue with Google</button>
         </div>
     );
 };

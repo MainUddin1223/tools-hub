@@ -4,7 +4,7 @@ const SingleOrder = ({ order }) => {
     const { buyer, date, email, name, orderedQuantity, total, _id } = order;
     return (
         <div>
-            <div class="card  shadow-xl flex md:flex-row  p-4 m-4">
+            <div className="card  shadow-xl flex md:flex-row  p-4 m-4">
                 <div className='flex-auto mx-auto text-xl m-2 leading-relaxed'>
                     <p>Buyer Name : {buyer}</p>
                     <p>Buyer Email : {email}</p>

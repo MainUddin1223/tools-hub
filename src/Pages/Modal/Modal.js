@@ -11,7 +11,7 @@ const Modal = ({ deleteModal, setDeleteModal }) => {
         })
             .then(res => res.json())
             .then(data => {
-                if(data.deletedCount===1){
+                if (data.deletedCount === 1) {
                     toast.success('Product removed Successfully', {
                         position: "top-center",
                         autoClose: 5000,
@@ -27,14 +27,14 @@ const Modal = ({ deleteModal, setDeleteModal }) => {
     return (
         <div>
 
-            <input type="checkbox" id="my-modal" class="modal-toggle" />
-            <div class="modal">
-                <div class="modal-box">
-                    <h3 class="font-bold text-lg">Are you sure to delete {name} !</h3>
-                    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-                    <div class="modal-action">
-                        <label for="my-modal" class="btn">Cancel</label>
-                        <label onClick={handleRemove} for="my-modal" class="btn">Confirm</label>
+            <input type="checkbox" id="my-modal" className="modal-toggle" />
+            <div className="modal">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Are you sure to delete {name} !</h3>
+                    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                    <div className="modal-action">
+                        <label htmlFor="my-modal" className="btn">Cancel</label>
+                        <label onClick={handleRemove} htmlFor="my-modal" className="btn">Confirm</label>
                     </div>
                 </div>
             </div>

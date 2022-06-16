@@ -55,13 +55,13 @@ const Order = () => {
         <div>
             <Scrol></Scrol>
             <div className=' w-3/4 mx-auto shadow-xl '>
-                <h1 class="text-2xl font-bold text-center my-8"> Order preview</h1>
-                <div class="hero">
-                    <div class="hero-content flex-col lg:flex-row-reverse">
+                <h1 className="text-2xl font-bold text-center my-8"> Order preview</h1>
+                <div className="hero">
+                    <div className="hero-content flex-col lg:flex-row-reverse">
                         <div className='card w-3/4'>
                             <figure><img src={img} className='h-48' alt={name} /></figure>
-                            <div class="card-body ">
-                                <h2 class="card-title">
+                            <div className="card-body ">
+                                <h2 className="card-title">
                                     {name}
                                 </h2>
 
@@ -78,15 +78,15 @@ const Order = () => {
                         <div className='w-3/4'>
 
                             <hr className='w-1' />
-                            <h1 class="text-xl font-bold"> Buyer Name: {user?.displayName}</h1>
-                            <p class="py-3 font-bold">Email:{user?.email}</p>
-                            <p class="py-3">Order Date:{date}</p>
+                            <h1 className="text-xl font-bold"> Buyer Name: {user?.displayName}</h1>
+                            <p className="py-3 font-bold">Email:{user?.email}</p>
+                            <p className="py-3">Order Date:{date}</p>
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className="block mx-auto ">
                                     <label className="label ">
                                         <span className="label-text text-xl">Order Quantity</span>
                                     </label>
-                                    <input class="input text-xl  input-bordered w-full max-w-xl my-2 block"  {...register("quantity", {
+                                    <input className="input text-xl  input-bordered w-full max-w-xl my-2 block"  {...register("quantity", {
                                         required: {
                                             value: true,
                                             message: 'Please Input Product Quantity'

@@ -32,21 +32,21 @@ const Dashboard = () => {
         navigate('/login')
     }
     return loader ? <Spinner></Spinner> : (
-        <div class="drawer drawer-mobile">
-<Scrol></Scrol>
-            <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+        <div className="drawer drawer-mobile">
+            <Scrol></Scrol>
+            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 
-            <div class="drawer-content flex flex-col ">
+            <div className="drawer-content flex flex-col ">
                 <div>
-                    <p for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">click</p>
+                    <p htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">click</p>
                 </div>
                 {/* <!-- Page content here --> */}
-                {/* <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
+                {/* <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
                 <Outlet />
             </div>
-            <div class="drawer-side">
-                <label for="my-drawer-2" class="drawer-overlay"></label>
-                <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 pl-8 text-xl text-base-content">
+            <div className="drawer-side">
+                <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+                <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 pl-8 text-xl text-base-content">
                     {/* <!-- Sidebar content here --> */}
                     {dashboardList}
 

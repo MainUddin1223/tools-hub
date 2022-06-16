@@ -80,8 +80,8 @@ const MakeAdmin = () => {
                 <button className='btn btn-accent' onClick={makeAdmin}>make Admin</button>
             </div>
             <div>
-                <div class="overflow-x-auto">
-                    <table class="table w-full">
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
                         <thead>
                             <tr>
                                 <th>id</th>

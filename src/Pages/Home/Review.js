@@ -14,12 +14,11 @@ const Review = () => {
                 setReview(data)
             })
     }, [])
-    console.log(updatedReviews);
     const ratingStar = [faStar, faStar, faStar, faStar, faStar]
     return (
         <div className='mx-8 my-12 font-sans mt-16'>
             <h1 className='text-5xl my-16 text-center font-bold'>Our happy customers</h1>
-            
+
             <div className='md:w-3/4 mx-auto'>
 
                 <Swiper
@@ -45,8 +44,8 @@ const Review = () => {
                             <div className='h-96'>
                                 {tool?.img ? <img src={tool.img} alt='' className='rounded-full mx-auto' /> : <FontAwesomeIcon icon={faUser} className=" mx-auto block text-5xl text-white bg-accent p-4 rounded-full" />}
                                 <div className='text-center my-4'>
-                                    {tool?.name ? <h2 class="text-2xl text-center py-4">{tool?.name}</h2> :
-                                        <h2 class="text-2xl text-center py-4">User</h2>}
+                                    {tool?.name ? <h2 className="text-2xl text-center py-4">{tool?.name}</h2> :
+                                        <h2 className="text-2xl text-center py-4">User</h2>}
                                     <p className='text-lg flex justify-center text-orange-500 my-2'>
                                         {
                                             (ratingStar.slice(0, tool.rating)).map((star, index) => <FontAwesomeIcon key={index} icon={star} className='flex ' />)
